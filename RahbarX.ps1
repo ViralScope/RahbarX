@@ -1156,8 +1156,9 @@ function Enable-GameMode {
     # Define non-essential services to stop
     $services = @(
         # System/Core Services (Non-Essential for Gaming)
-        "AllJoyn Router Service", "BITS", "BitLocker Drive Encryption Service", "Bluetooth Support Service",
-        "BthAvctpSvc", "CertPropSvc", "Connected Devices Platform Service", "CscService", "DiagTrack",
+        "AllJoyn Router Service", "BITS", "BitLocker Drive Encryption Service",
+        "CertPropSvc", "Connected Devices Platform Service", "CscService", "DiagTrack",
+        # PRESERVED: "Bluetooth Support Service", "BthAvctpSvc" - Required for Bluetooth headsets
         "Diagnostic Policy Service", "Distributed Link Tracking Client", "Downloaded Maps Manager", "DPS",
         "DusmSvc", "Fax", "Function Discovery Resource Publication",
         "Geolocation Service", "icssvc", "LanmanServer", "lmhosts", "MapsBroker", "Microsoft iSCSI Initiator Service",
@@ -1173,7 +1174,8 @@ function Enable-GameMode {
         "Themes", "TrkWks", "FontCache", "DoSvc", "xboxgip", "xbgm", "XblGameSave", "XblAuthManager",
         "seclogon", "WSearch", "Tablet PC Input Service", "WaaSMedicSvc", "TextInputManagementService",
         "WebBrowserInfrastructureService", "WpnService", "InstallService", "ActiveX Installer", "AxInstSV",
-        "Application Layer Gateway Service", "Auto Time Zone Updater", "Bluetooth Audio Gateway Service",
+        "Application Layer Gateway Service", "Auto Time Zone Updater",
+        # PRESERVED: "Bluetooth Audio Gateway Service" - Required for Bluetooth headsets
         "BranchCache", "Capability Access Manager Service", "Cloud Backup and Restore Service",
         "Delivery Optimization", "Function Discovery Provider Host", "GraphicsPerfSvc", "Hyper-V Services",
         "Internet Connection Sharing", "Language Experience Service", "Microsoft Store Install Service",
@@ -1182,9 +1184,11 @@ function Enable-GameMode {
         "vmicrdv", "vmictimesync", "vmicvss", "AppXSvc", "BDESVC", "wlidsvc", "LicenseManager",
         
         # Additional Gaming Optimization Services
-        "dmvsc", "DmEnrollmentSvc", "PcaSvc", "TapiSrv", "Wcmsvc", "WeakGroupPolicy",
+        "dmvsc", "DmEnrollmentSvc", "PcaSvc", "TapiSrv", "WeakGroupPolicy",
         "WaaSMedicSvc", "WpnService", "WpnUserService", "AnyDesk", "TeamViewer",
-        "AVP", "avpsvc", "conhost", "dwm", "EFS", "hidserv",
+        "AVP", "avpsvc", "conhost", "dwm", "EFS",
+        # PRESERVED: "Wcmsvc" - Required for WiFi connectivity
+        # PRESERVED: "hidserv" - Required for USB headsets/peripherals
         "PNRPsvc", "PnrpAutoReg", "upnphost", "WercplSupport",
         
         # Telemetry & Tracking Services
@@ -1209,7 +1213,8 @@ function Enable-GameMode {
         "AiShell.Service", "WindowsCopilot.Service", "MicrosoftCopilot.Service",
         
         # Additional Performance Optimizations
-        "AudioEndpointBuilder", "Audiosrv", "AxInstSV", "WbioSrvc",
+        # PRESERVED: "AudioEndpointBuilder", "Audiosrv" - Required for audio output
+        "AxInstSV", "WbioSrvc",
         "WinDefend", "WinHttpAutoProxySvc", "Winmgmt", "WinRM",
         "WMPNetworkSvc", "WSService", "wuauserv",
         
@@ -1268,7 +1273,8 @@ function Enable-GameMode {
         # Core System Services (Non-Essential)
         "BITS", "SysMain", "SSDPSRV", "WbioSrvc", "RemoteRegistry",
         "wercplsupport", "DPS", "TermService", "WpcMonSvc", "DiagTrack", "MapsBroker",
-        "icssvc", "CertPropSvc", "PhoneSvc", "BthAvctpSvc", "lmhosts", "WerSvc", "RmSvc",
+        "icssvc", "CertPropSvc", "PhoneSvc", "lmhosts", "WerSvc", "RmSvc",
+        # PRESERVED: "BthAvctpSvc" - Required for Bluetooth headsets
         "DusmSvc", "TabletInputService", "RetailDemo", "wuauserv",
         
         # Telemetry & Diagnostics
