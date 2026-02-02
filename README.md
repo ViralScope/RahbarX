@@ -13,6 +13,14 @@ A comprehensive PowerShell utility to optimize Windows 10/11 for gaming and maxi
 - **Memory Optimization** - Clean standby memory and optimize paging
 - **Complete Rollback** - Undo all changes with one click
 
+## Quick Start
+
+Run this command in PowerShell to download and launch RahbarX:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; iwr "https://raw.githubusercontent.com/ViralScope/RahbarX/main/RahbarX.ps1" -OutFile "$env:USERPROFILE\Desktop\RahbarX.ps1"; & "$env:USERPROFILE\Desktop\RahbarX.ps1"
+```
+
 ## Requirements
 
 - Windows 10 (Build 19041+) or Windows 11
