@@ -4995,7 +4995,7 @@ function Disable-VBS {
         
         # Check Secure Boot
         try {
-            $secureBootStatus = Get-SecureBootUEFI -ErrorAction SilentlyContinue
+            $secureBootStatus = Confirm-SecureBootUEFI -ErrorAction SilentlyContinue
             $currentVBSStatus.SecureBootEnabled = $secureBootStatus
             $preDisableChecks.SecureBootCheck = "PASS"
         } catch {
