@@ -1214,8 +1214,9 @@ function Enable-GameMode {
         
         # Additional Performance Optimizations
         # PRESERVED: "AudioEndpointBuilder", "Audiosrv" - Required for audio output
+        # PRESERVED: "Winmgmt" - Required for WMI/CIM (Get-NetAdapter, system queries)
         "AxInstSV", "WbioSrvc",
-        "WinDefend", "WinHttpAutoProxySvc", "Winmgmt", "WinRM",
+        "WinDefend", "WinHttpAutoProxySvc", "WinRM",
         "WMPNetworkSvc", "WSService", "wuauserv",
         
         # Telemetry Services Only (Safe to disable)
