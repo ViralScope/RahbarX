@@ -6533,11 +6533,11 @@ $headerPanel.Add_Paint({
     $pen.Dispose()
 })
 
-# Logo/Title with nature leaf icon
+# Logo/Title
 $titleLabel = New-Object System.Windows.Forms.Label
 $titleLabel.Location = New-Object System.Drawing.Point(25, 22)
 $titleLabel.Size = New-Object System.Drawing.Size(320, 40)
-$titleLabel.Text = "🌿 RahbarX"
+$titleLabel.Text = "RahbarX"
 $titleLabel.Font = $script:Fonts.Title
 $titleLabel.ForeColor = $script:Theme.Primary
 $titleLabel.BackColor = [System.Drawing.Color]::Transparent
@@ -6563,24 +6563,24 @@ $versionBadge.ForeColor = $script:Theme.TextDim
 $versionBadge.BackColor = [System.Drawing.Color]::Transparent
 $headerPanel.Controls.Add($versionBadge)
 
-# Admin status badge (top right) - leaf indicator
+# Admin status badge (top right)
 $adminBadge = New-Object System.Windows.Forms.Label
 $adminBadge.Location = New-Object System.Drawing.Point(340, 25)
 $adminBadge.Size = New-Object System.Drawing.Size(110, 28)
-$adminBadge.Text = $(if($isAdmin){"🌱 Rooted"}else{"🍂 Limited"})
+$adminBadge.Text = $(if($isAdmin){"* Admin"}else{"~ Limited"})
 $adminBadge.Font = $script:Fonts.Small
 $adminBadge.ForeColor = $(if($isAdmin){$script:Theme.Success}else{$script:Theme.Warning})
 $adminBadge.BackColor = [System.Drawing.Color]::Transparent
 $adminBadge.TextAlign = [System.Drawing.ContentAlignment]::MiddleRight
 $headerPanel.Controls.Add($adminBadge)
 
-# System info quick stats - organic display
+# System info quick stats
 $cpuCores = (Get-CimInstance Win32_Processor).NumberOfCores
 $ramGB = [math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB, 0)
 $sysInfoLabel = New-Object System.Windows.Forms.Label
 $sysInfoLabel.Location = New-Object System.Drawing.Point(300, 60)
 $sysInfoLabel.Size = New-Object System.Drawing.Size(150, 35)
-$sysInfoLabel.Text = "🌾 $($cpuCores) cores`n💧 $($ramGB)GB RAM"
+$sysInfoLabel.Text = "$($cpuCores) cores`n$($ramGB)GB RAM"
 $sysInfoLabel.Font = $script:Fonts.Small
 $sysInfoLabel.ForeColor = $script:Theme.TextDim
 $sysInfoLabel.BackColor = [System.Drawing.Color]::Transparent
@@ -6592,11 +6592,11 @@ $form.Controls.Add($headerPanel)
 # ================================================================
 # 🌿 GROWTH - Performance Section
 # ================================================================
-$perfLabel = New-SectionLabel -Text "🌱 GROWTH  —  Performance" -X 20 -Y 120 -Color $script:Theme.Primary
+$perfLabel = New-SectionLabel -Text "PERFORMANCE" -X 20 -Y 120 -Color $script:Theme.Primary
 $form.Controls.Add($perfLabel)
 
-# Game Mode Button (Primary CTA) - Like sunlight
-$buttonGameMode = New-ModernButton -Text "Game Mode" -Icon "☀️" `
+# Game Mode Button
+$buttonGameMode = New-ModernButton -Text "Game Mode" -Icon "" `
     -X 20 -Y 148 -Width 215 -Height 52 `
     -BackColor $script:Theme.Primary -HoverColor $script:Theme.PrimaryHover `
     -AccentColor $script:Theme.Primary -IsPrimary `
@@ -6605,8 +6605,8 @@ $buttonGameMode.ForeColor = $script:Theme.Background
 $form.Controls.Add($buttonGameMode)
 $toolTip.SetToolTip($buttonGameMode, "Optimize your system for peak gaming performance")
 
-# Network Optimization Button - Like flowing water
-$buttonNetwork = New-ModernButton -Text "Network Flow" -Icon "🌊" `
+# Network Optimization Button
+$buttonNetwork = New-ModernButton -Text "Network" -Icon "" `
     -X 245 -Y 148 -Width 195 -Height 52 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Secondary `
@@ -6614,8 +6614,8 @@ $buttonNetwork = New-ModernButton -Text "Network Flow" -Icon "🌊" `
 $form.Controls.Add($buttonNetwork)
 $toolTip.SetToolTip($buttonNetwork, "Optimize network for smooth, low-latency connections")
 
-# GPU Scheduling Button - Mountain stability
-$buttonHAGS = New-ModernButton -Text "GPU Power" -Icon "🏞️" `
+# GPU Scheduling Button
+$buttonHAGS = New-ModernButton -Text "GPU" -Icon "" `
     -X 20 -Y 210 -Width 135 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Purple `
@@ -6623,8 +6623,8 @@ $buttonHAGS = New-ModernButton -Text "GPU Power" -Icon "🏞️" `
 $form.Controls.Add($buttonHAGS)
 $toolTip.SetToolTip($buttonHAGS, "Enable Hardware Accelerated GPU Scheduling")
 
-# Disable VBS Button - Clear the fog
-$buttonVBS = New-ModernButton -Text "Clear VBS" -Icon "🌫️" `
+# Disable VBS Button
+$buttonVBS = New-ModernButton -Text "VBS" -Icon "" `
     -X 165 -Y 210 -Width 135 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Warning `
@@ -6632,8 +6632,8 @@ $buttonVBS = New-ModernButton -Text "Clear VBS" -Icon "🌫️" `
 $form.Controls.Add($buttonVBS)
 $toolTip.SetToolTip($buttonVBS, "Disable VBS for +5-10% performance boost")
 
-# Visual Effects Button - Morning clarity
-$buttonVisualFX = New-ModernButton -Text "Clarity" -Icon "🌟" `
+# Visual Effects Button
+$buttonVisualFX = New-ModernButton -Text "Visual FX" -Icon "" `
     -X 310 -Y 210 -Width 130 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Cyan `
@@ -6641,8 +6641,8 @@ $buttonVisualFX = New-ModernButton -Text "Clarity" -Icon "🌟" `
 $form.Controls.Add($buttonVisualFX)
 $toolTip.SetToolTip($buttonVisualFX, "Simplify visual effects for smoother experience")
 
-# Frame-Time Consistency Button - Steady stream
-$buttonFrametime = New-ModernButton -Text "🌾 Frame Harmony  —  Stutter-Free Gaming" -Icon "" `
+# Frame-Time Consistency Button
+$buttonFrametime = New-ModernButton -Text "Frame Harmony  -  Stutter-Free Gaming" -Icon "" `
     -X 20 -Y 268 -Width 420 -Height 44 `
     -BackColor $script:Theme.SurfaceAlt -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Success -IsPrimary `
@@ -6652,13 +6652,13 @@ $form.Controls.Add($buttonFrametime)
 $toolTip.SetToolTip($buttonFrametime, "Optimize timer resolution and CPU scheduling for smooth framerates")
 
 # ================================================================
-# 🍃 RENEWAL - Cleanup & Repair Section
+# CLEANUP & REPAIR Section
 # ================================================================
-$cleanLabel = New-SectionLabel -Text "🍃 RENEWAL  —  Cleanup & Repair" -X 20 -Y 325 -Color $script:Theme.Secondary
+$cleanLabel = New-SectionLabel -Text "CLEANUP & REPAIR" -X 20 -Y 325 -Color $script:Theme.Secondary
 $form.Controls.Add($cleanLabel)
 
-# Clean Windows Button - Autumn leaves falling
-$buttonClean = New-ModernButton -Text "Clean" -Icon "🍂" `
+# Clean Windows Button
+$buttonClean = New-ModernButton -Text "Clean" -Icon "" `
     -X 20 -Y 353 -Width 135 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Secondary `
@@ -6666,8 +6666,8 @@ $buttonClean = New-ModernButton -Text "Clean" -Icon "🍂" `
 $form.Controls.Add($buttonClean)
 $toolTip.SetToolTip($buttonClean, "Clear temporary files, caches and free up disk space")
 
-# Debloat Button - Prune the excess
-$buttonDebloat = New-ModernButton -Text "Prune" -Icon "✂️" `
+# Debloat Button
+$buttonDebloat = New-ModernButton -Text "Debloat" -Icon "" `
     -X 165 -Y 353 -Width 135 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Warning `
@@ -6675,8 +6675,8 @@ $buttonDebloat = New-ModernButton -Text "Prune" -Icon "✂️" `
 $form.Controls.Add($buttonDebloat)
 $toolTip.SetToolTip($buttonDebloat, "Remove bloatware and unnecessary Windows apps")
 
-# Repair Windows Button - Heal and restore
-$buttonRepair = New-ModernButton -Text "Heal" -Icon "🌿" `
+# Repair Windows Button
+$buttonRepair = New-ModernButton -Text "Repair" -Icon "" `
     -X 310 -Y 353 -Width 130 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Cyan `
@@ -6685,13 +6685,13 @@ $form.Controls.Add($buttonRepair)
 $toolTip.SetToolTip($buttonRepair, "Run system repair utilities (DISM, SFC)")
 
 # ================================================================
-# 🍀 RESTORE - Recovery Section
+# RESTORE Section
 # ================================================================
-$restoreLabel = New-SectionLabel -Text "🍀 RESTORE  —  Recovery" -X 20 -Y 415 -Color $script:Theme.Warning
+$restoreLabel = New-SectionLabel -Text "RESTORE" -X 20 -Y 415 -Color $script:Theme.Warning
 $form.Controls.Add($restoreLabel)
 
-# Restore Services Button - Regrowth
-$buttonRestore = New-ModernButton -Text "Restore Services" -Icon "🌱" `
+# Restore Services Button
+$buttonRestore = New-ModernButton -Text "Restore Services" -Icon "" `
     -X 20 -Y 443 -Width 200 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Warning `
@@ -6699,8 +6699,8 @@ $buttonRestore = New-ModernButton -Text "Restore Services" -Icon "🌱" `
 $form.Controls.Add($buttonRestore)
 $toolTip.SetToolTip($buttonRestore, "Restore Windows services to their default state")
 
-# Restore Network Button - Return to source
-$buttonRestoreNetwork = New-ModernButton -Text "Restore Network" -Icon "💧" `
+# Restore Network Button
+$buttonRestoreNetwork = New-ModernButton -Text "Restore Network" -Icon "" `
     -X 230 -Y 443 -Width 210 -Height 48 `
     -BackColor $script:Theme.Surface -HoverColor $script:Theme.SurfaceLight `
     -AccentColor $script:Theme.Cyan `
@@ -6708,8 +6708,8 @@ $buttonRestoreNetwork = New-ModernButton -Text "Restore Network" -Icon "💧" `
 $form.Controls.Add($buttonRestoreNetwork)
 $toolTip.SetToolTip($buttonRestoreNetwork, "Revert network optimizations to Windows defaults")
 
-# Complete Rollback Button - Full reset (styled as warning)
-$buttonRollback = New-ModernButton -Text "🌻  Full Restoration  —  Undo All Changes" -Icon "" `
+# Complete Rollback Button
+$buttonRollback = New-ModernButton -Text "Full Rollback  -  Undo All Changes" -Icon "" `
     -X 20 -Y 501 -Width 420 -Height 44 `
     -BackColor $script:Theme.Danger -HoverColor $script:Theme.DangerHover `
     -AccentColor $script:Theme.Danger -IsPrimary `
@@ -6720,13 +6720,13 @@ $form.Controls.Add($buttonRollback)
 $toolTip.SetToolTip($buttonRollback, "Completely restore system to original state")
 
 # ================================================================
-# 🌼 TOOLS - Utilities Section
+# TOOLS Section
 # ================================================================
-$utilLabel = New-SectionLabel -Text "🌼 TOOLS" -X 20 -Y 560 -Color $script:Theme.TextMuted
+$utilLabel = New-SectionLabel -Text "TOOLS" -X 20 -Y 560 -Color $script:Theme.TextMuted
 $form.Controls.Add($utilLabel)
 
-# Help Button - Knowledge tree
-$buttonHelp = New-ModernButton -Text "Guide" -Icon "🌳" `
+# Help Button
+$buttonHelp = New-ModernButton -Text "Guide" -Icon "" `
     -X 20 -Y 585 -Width 100 -Height 38 `
     -BackColor $script:Theme.SurfaceAlt -HoverColor $script:Theme.SurfaceLight `
     -IsCompact `
@@ -6734,8 +6734,8 @@ $buttonHelp = New-ModernButton -Text "Guide" -Icon "🌳" `
 $form.Controls.Add($buttonHelp)
 $toolTip.SetToolTip($buttonHelp, "View instructions and documentation")
 
-# Shortcut Button - Quick path
-$buttonShortcut = New-ModernButton -Text "Shortcut" -Icon "🌟" `
+# Shortcut Button
+$buttonShortcut = New-ModernButton -Text "Shortcut" -Icon "" `
     -X 130 -Y 585 -Width 100 -Height 38 `
     -BackColor $script:Theme.SurfaceAlt -HoverColor $script:Theme.SurfaceLight `
     -IsCompact `
@@ -6743,8 +6743,8 @@ $buttonShortcut = New-ModernButton -Text "Shortcut" -Icon "🌟" `
 $form.Controls.Add($buttonShortcut)
 $toolTip.SetToolTip($buttonShortcut, "Create desktop shortcut")
 
-# Session Log Button - Trail marker
-$buttonLog = New-ModernButton -Text "Trail Log" -Icon "📝" `
+# Session Log Button
+$buttonLog = New-ModernButton -Text "Log" -Icon "" `
     -X 240 -Y 585 -Width 100 -Height 38 `
     -BackColor $script:Theme.SurfaceAlt -HoverColor $script:Theme.SurfaceLight `
     -IsCompact `
@@ -6758,8 +6758,8 @@ $buttonLog = New-ModernButton -Text "Trail Log" -Icon "📝" `
 $form.Controls.Add($buttonLog)
 $toolTip.SetToolTip($buttonLog, "Open session log file")
 
-# Exit Button - Sunset
-$buttonExit = New-ModernButton -Text "Exit" -Icon "🌅" `
+# Exit Button
+$buttonExit = New-ModernButton -Text "Exit" -Icon "" `
     -X 350 -Y 585 -Width 90 -Height 38 `
     -BackColor $script:Theme.SurfaceAlt -HoverColor $script:Theme.SurfaceLight `
     -IsCompact `
@@ -6772,7 +6772,7 @@ $form.Controls.Add($buttonExit)
 $toolTip.SetToolTip($buttonExit, "Exit RahbarX")
 
 # ================================================================
-# 🌿 FOOTER STATUS BAR - Ground level
+# FOOTER STATUS BAR
 # ================================================================
 $footerPanel = New-Object System.Windows.Forms.Panel
 $footerPanel.Location = New-Object System.Drawing.Point(0, 690)
@@ -6787,20 +6787,20 @@ $footerPanel.Add_Paint({
     $pen.Dispose()
 })
 
-# Status icon and text - like a growing indicator
+# Status text
 $footerStatus = New-Object System.Windows.Forms.Label
 $footerStatus.Location = New-Object System.Drawing.Point(20, 18)
 $footerStatus.Size = New-Object System.Drawing.Size(300, 20)
-$footerStatus.Text = "🌿 Ready to grow"
+$footerStatus.Text = "Ready"
 $footerStatus.Font = $script:Fonts.Small
 $footerStatus.ForeColor = $script:Theme.Success
 $footerPanel.Controls.Add($footerStatus)
 
-# Copyright/version in footer - subtle like moss
+# Copyright/version in footer
 $footerVersion = New-Object System.Windows.Forms.Label
 $footerVersion.Location = New-Object System.Drawing.Point(300, 18)
 $footerVersion.Size = New-Object System.Drawing.Size(160, 20)
-$footerVersion.Text = "🌱 RahbarX 2026"
+$footerVersion.Text = "RahbarX 2026"
 $footerVersion.Font = $script:Fonts.Small
 $footerVersion.ForeColor = $script:Theme.TextDim
 $footerVersion.TextAlign = [System.Drawing.ContentAlignment]::MiddleRight
