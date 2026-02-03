@@ -73,10 +73,12 @@ $script:MIN_WINDOWS_BUILD = 19041  # Windows 10 2004
 $script:UI_DELAY_SECONDS = 3
 $script:ICON_URL = "https://github.com/ViralScope/RahbarX/raw/main/RahbarX.ico"
 $script:ICON_HASH_SHA256 = ""  # Set to actual hash for production
-$script:LOG_DIRECTORY = "$env:LOCALAPPDATA\RahbarX\Logs"
-$script:BACKUP_DIRECTORY = "$env:LOCALAPPDATA\RahbarX\Backups"
-$script:SERVICE_BACKUP_FILE = "$env:LOCALAPPDATA\RahbarX\Backups\ServiceStates.xml"
-$script:BCD_BACKUP_DIRECTORY = "$env:LOCALAPPDATA\RahbarX\Backups\BCD"
+$script:OUTPUT_DIRECTORY = "$env:USERPROFILE\Desktop\RahbarX-Output"  # Main output folder for all generated files
+$script:LOG_DIRECTORY = "$script:OUTPUT_DIRECTORY\Logs"
+$script:BACKUP_DIRECTORY = "$script:OUTPUT_DIRECTORY\Backups"
+$script:REGISTRY_BACKUP_DIRECTORY = "$script:OUTPUT_DIRECTORY\Registry-Backups"
+$script:SERVICE_BACKUP_FILE = "$script:BACKUP_DIRECTORY\ServiceStates.xml"
+$script:BCD_BACKUP_DIRECTORY = "$script:BACKUP_DIRECTORY\BCD"
 
 # ================================================================
 # SECURE PRIVILEGE ESCALATION WITH VALIDATION
@@ -102,8 +104,8 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
         Write-Host "Script Hash (SHA256): $scriptHash" -ForegroundColor Gray
         Write-Host ""
         
-        # Log elevation attempt
-        $elevationLogDir = "$env:LOCALAPPDATA\RahbarX\Logs"
+        # Log elevation attempt - use Desktop output folder
+        $elevationLogDir = "$env:USERPROFILE\Desktop\RahbarX-Output\Logs"
         if (-not (Test-Path $elevationLogDir)) {
             New-Item -Path $elevationLogDir -ItemType Directory -Force | Out-Null
         }
@@ -153,8 +155,16 @@ $global:SessionLog = @{
     AppsRemoved = 0
 }
 
+# Ensure output directory exists
+if (-not (Test-Path $script:OUTPUT_DIRECTORY)) {
+    New-Item -Path $script:OUTPUT_DIRECTORY -ItemType Directory -Force | Out-Null
+}
+if (-not (Test-Path $script:LOG_DIRECTORY)) {
+    New-Item -Path $script:LOG_DIRECTORY -ItemType Directory -Force | Out-Null
+}
+
 # Create session log file
-$global:LogFile = "$env:USERPROFILE\Desktop\RahbarX-Session-$(Get-Date -Format 'yyyy-MM-dd-HHmmss').log"
+$global:LogFile = "$script:LOG_DIRECTORY\RahbarX-Session-$(Get-Date -Format 'yyyy-MM-dd-HHmmss').log"
 
 function Write-SessionLog {
     param([string]$Message, [string]$Type = "INFO")
@@ -625,7 +635,7 @@ function Backup-RegistryKey {
         [string]$BackupName
     )
     
-    $backupPath = "$env:USERPROFILE\Desktop\RahbarX-Registry-Backups"
+    $backupPath = $script:REGISTRY_BACKUP_DIRECTORY
     if (-not (Test-Path $backupPath)) {
         New-Item -Path $backupPath -ItemType Directory -Force | Out-Null
     }
@@ -1227,7 +1237,7 @@ function Restore-AllOptimizations {
     Write-Host "PHASE 6: Available Backups" -ForegroundColor Cyan
     
     # Registry backups
-    $regBackupPath = "$env:USERPROFILE\Desktop\RahbarX-Registry-Backups"
+    $regBackupPath = $script:REGISTRY_BACKUP_DIRECTORY
     if (Test-Path $regBackupPath) {
         $regBackups = Get-ChildItem $regBackupPath -Filter "*.reg" -ErrorAction SilentlyContinue
         if ($regBackups) {
